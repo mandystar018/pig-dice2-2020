@@ -1,13 +1,23 @@
 //Game Constructor & Prototypes
 function Game() {
   this.players = [];
+  this.switch = 1;//<-- This will be used to find player id (switch will change after roll and then you can match it to player id)
+  this.currentId = 0;//<-- This is will be used to assign player id
+}
+
+Game.prototype.assignId = function(player) {
+  this.currentId += 1;
+  return this.currentId;
 }
 
 Game.prototype.addPlayer = function(player) {
+  player.id = this.assignId();
   this.players.push(player);
 }
 
 
+
+Game.prototype.
 //Player Constructor
 
 function Player() {
@@ -16,7 +26,7 @@ function Player() {
 }
 //Factory Functions
 function generateRandomNumber() {
-  let randomNumber = Math.floor(Math.random() * 6) + 1;
+  let randomNumber = Math.floor((Math.random() * 6) + 1);
   $("#rollValue").text(randomNumber);
   return randomNumber;
 }
