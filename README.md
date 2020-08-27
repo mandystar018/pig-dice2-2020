@@ -10,15 +10,14 @@ _This project simulates the game of pig dice. Two users are able to play togethe
 
 ## Spec
 
-| Behavior                                                                             |               Input               |                  Output |
-|--------------------------------------------------------------------------------------|:---------------------------------:|------------------------:|
-| User chooses size from radio box options and  the choice is collected on submit      |       user clicks large size      |   "large" is collected  |
-| User chooses meat option from radio box option and the choice is collected on submit |   user clicks pepperoni  option   | "pepperoni is collected |
-| User chooses other options from drop down list                                       |      user chooses "mushrooms"     |    Checkbox is marked   |
-| Size and meat choices are displayed to user on  submit                               | user chooses large and  pepperoni |    -large -pepperoni    |
-| Pizza price is determined based on user choices  from meat and size options          | user chooses large and  pepperoni | $14                     |
-
-
+| | Behavior                                                   |               Input              |                     Output |
+|------------------------------------------------------------|:--------------------------------:|---------------------------:|
+| A random number between 1 & 6 is generated upon dice roll  |     user clicks  roll button     |              5             |
+| Number rolled is added to player turn total                |           user rolls 4           |   turn total updates to 9  |
+| If a 1 is rolled, turn total is 0                          |           user rolls 1           |   turn total updates to 0  |
+| Turn score is added to total score at turn's end           |     user's turn  score is 15     |  total score updates to 22 |
+| Player is switched when current player holds               | player 1 presses hold or rolls 1 | game switches to  player 2 |
+| Game ends when either player's score reaches 100 or higher | player 2 score reaches 102       | alert(player 2 wins!       |
 
 ## Setup/Installation Requirements
 
