@@ -1,7 +1,12 @@
-//Game Constructor 
+//Game Constructor & Prototypes
 function Game() {
   this.players = [];
 }
+
+Game.prototype.addPlayer = function(player) {
+  this.players.push(player);
+}
+
 
 //Player Constructor
 
@@ -20,7 +25,7 @@ let turnTotal = 0;
 function rollDice() {
   let roll = generateRandomNumber();
   if (roll === 1) {
-    let turnTotal = 0;
+    turnTotal += 0;
     $("#playerScore").text(turnTotal);
   } else {
     turnTotal += roll;
@@ -30,7 +35,15 @@ function rollDice() {
 
 
 $(document).ready(function() {
-  $()
+  $("#newGame").click(function() {
+    const game = new Game();
+    const player1 = new Player();
+    const player2 = new Player();
+    game.addPlayer(player1);
+    game.addPlayer(player2);
+    console.log(game);
+    console.log(game.players[0]);
+  })
   $(".roll").click(function(event) {
     generateRandomNumber();
   });
