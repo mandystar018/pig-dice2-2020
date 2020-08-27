@@ -40,8 +40,10 @@ Player.prototype.diceRoll = function() {
   if (diceRoll === 1) {
     this.turnTotal += 0; //<-- This will update player's key(turnTotal) value
     this.score += 0; //<-- This will update players key(score) value
-    $("#turnScore").text("0");
-    $("#currentScore").text(this.score);
+    $("#turnScore").text(" ");
+    $("#currentScore").text(" ");
+    hold();
+    alert("You rolled a one :( Next player's turn!");
   } else {
     this.turnTotal += diceRoll; //<--This will update player's key(turnTotal) value
     $("turnScore").text(turnTotal);
@@ -55,7 +57,23 @@ function generateRandomNumber() {
 }
 
 function hold(id) {
-  let currentPlayer = game.
+  let currentPlayer = game.lookupPlayer(id); //<--This will link player id
+  currentplayer.score += currentPlayer.turnTotal; //<--This will update players key(score)
+  currentPlayer.turnTotal = 0; //<--This will reset player's key(turnTotal)
+  if (currentPlayer.score >= 100) {
+    alert("Player " + game.switch + " wins!");
+    $("#showLater").hide();
+    $("#rules").show();
+  } else if (game.switch === 1) {
+    game.switch === 2; //<--This will change game switch to 2 if it is currently at 1
+    $("#turnScore").text(" ");
+    $("#currentScore").text(" ");
+  } else {
+    game.switch === 1; //<--This will change game switch to 1 if it is currently at 2
+    $("#turnScore").text(" ");
+    $("#currentScore").text(" ");
+  }
+
 }
 
 $(document).ready(function() {
