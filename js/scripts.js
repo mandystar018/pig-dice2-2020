@@ -15,6 +15,17 @@ Game.prototype.addPlayer = function(player) {
   this.players.push(player);//<--This will add player to game object
 }
 
+Game.prototype.lookupPlayer = function(id) {
+  for (let i = 0; i < this.players.length; i++) { //<--This will loop through players in game
+    if (this.players[i]) { //<--This will ensure there are players 
+      if (this.players[i].id == id) { //<-- This will check if player's id matches parameter(id)
+        return this.players[i]; //<-- This will return mathcing player id
+      }
+    }
+  };
+  return false; //<--This will return false if no matching id is found
+}
+
 //Player Constructor & Prototypes
 
 function Player() {
@@ -22,15 +33,17 @@ function Player() {
   this.score = 0;
 }
 
+//User Interface Logic
+
 Player.prototype.diceRoll = function() {
   let diceRoll = generateRandomNumber();
   if (diceRoll === 1) {
-    this.turnTotal += 0;
-    this.score += 0;
+    this.turnTotal += 0; //<-- This will update player's key(turnTotal) value
+    this.score += 0; //<-- This will update players key(score) value
     $("#turnScore").text("0");
     $("#currentScore").text(this.score);
   } else {
-    this.turnTotal += diceRoll;
+    this.turnTotal += diceRoll; //<--This will update player's key(turnTotal) value
     $("turnScore").text(turnTotal);
   }
 }
@@ -39,6 +52,10 @@ function generateRandomNumber() {
   let randomNumber = Math.floor((Math.random() * 6) + 1);
   $("#rollValue").text(randomNumber);
   return randomNumber;
+}
+
+function hold(id) {
+  let currentPlayer = game.
 }
 
 $(document).ready(function() {
