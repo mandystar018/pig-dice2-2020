@@ -10,7 +10,7 @@ _This project simulates the game of pig dice. Two users are able to play togethe
 
 ## Spec
 
-| | Behavior                                                   |               Input              |                     Output |
+| Behavior                                                   |               Input              |                     Output |
 |------------------------------------------------------------|:--------------------------------:|---------------------------:|
 | A random number between 1 & 6 is generated upon dice roll  |     user clicks  roll button     |              5             |
 | Number rolled is added to player turn total                |           user rolls 4           |   turn total updates to 9  |
