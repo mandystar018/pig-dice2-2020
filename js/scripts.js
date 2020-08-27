@@ -6,20 +6,33 @@ function Game() {
 }
 
 Game.prototype.assignId = function(player) {
-  this.currentId += 1;
+  this.currentId += 1;//<-- This will update game current id
   return this.currentId;
 }
 
 Game.prototype.addPlayer = function(player) {
-  player.id = this.assignId();
-  this.players.push(player);
+  player.id = this.assignId();//<--This will assign unique player id
+  this.players.push(player);//<--This will add player to game object
 }
 
-//Player Constructor
+//Player Constructor & Prototypes
 
 function Player() {
   this.turnTotal = 0;
   this.score = 0;
+}
+
+Player.prototype.diceRoll = function() {
+  let diceRoll = generateRandomNumber();
+  if (diceRoll === 1) {
+    this.turnTotal += 0;
+    this.score += 0;
+    $("#turnScore").text("0");
+    $("#currentScore").text(this.score);
+  } else {
+    this.turnTotal += diceRoll;
+    $("turnScore").text(turnTotal);
+  }
 }
 //Factory Functions
 function generateRandomNumber() {
@@ -27,19 +40,6 @@ function generateRandomNumber() {
   $("#rollValue").text(randomNumber);
   return randomNumber;
 }
-
-let turnTotal = 0;
-function rollDice() {
-  let roll = generateRandomNumber();
-  if (roll === 1) {
-    turnTotal += 0;
-    $("#playerScore").text(turnTotal);
-  } else {
-    turnTotal += roll;
-  }
-  $("#playerScore").text(turnTotal);
-}
-
 
 $(document).ready(function() {
   $("#newGame").click(function() {
