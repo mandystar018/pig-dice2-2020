@@ -15,9 +15,6 @@ Game.prototype.addPlayer = function(player) {
   this.players.push(player);
 }
 
-
-
-Game.prototype.
 //Player Constructor
 
 function Player() {
@@ -51,6 +48,8 @@ $(document).ready(function() {
     const player2 = new Player();
     game.addPlayer(player1);
     game.addPlayer(player2);
+    $("#rules").hide();
+    $(".showLater").show();
     console.log(game);
     console.log(game.players[0]);
   })

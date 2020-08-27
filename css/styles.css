@@ -1,0 +1,9 @@
+.showLater {
+  display: none;
+}
+
+#scoreBoard {
+  border: solid black;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
