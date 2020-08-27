@@ -57,9 +57,9 @@ function generateRandomNumber() {
   return randomNumber;
 }
 
-let game = new Game();
+let game = new Game();//<--This is global object
 
-function hold(id) { //paused on line 60 (game not defined)
+function hold(id) {   
   let currentPlayer = game.lookupPlayer(game.switch); //<--This will link player id
   console.log(currentPlayer);
   currentPlayer.score += currentPlayer.turnTotal; //<--This will update players key(score)
@@ -91,7 +91,7 @@ $(document).ready(function() {
   
   $(".roll").click(function(event) {
     let currentPlayer = game.lookupPlayer(game.switch);
-    // console.log(currentPlayer);
+    console.log(currentPlayer);
     currentPlayer.diceRoll();
     // console.log(player1.turnTotal);
     // console.log(player1.score);
