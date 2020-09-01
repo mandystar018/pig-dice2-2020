@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Pig Dice</title>
+</head>
+<body>
+  <h1 class="jumbotron">Pig Dice</h1>
+  <div id="rules">
+    <p>these are the rules!</p>
+    <button id="newGame">Let's play Pig!</button>
+  </div>
+
+  <div id="scoreBoard" class="showLater">
+    <p>Your Current Score: <span id="currentScore"></span></p>
+    <p>Current Roll: <span id="rollValue"></span></p>
+    <p>Turn Score:     <span id="turnScore"></span></p>
+  </div>
+
+
+  <div id="gameBoard" class="showLater">
+    <div class="row">
+      <div id="player1Board" class="col-md-6">
+        <h2>Player 1</h2>
+        <button class="roll">Roll</button>
+        <button class="hold">Hold</button>
+      </div>
+      <div id="player2Board" class="col-md-6">
+        <h2>Player 2</h2>
+        <button class="roll">Roll</button>
+        <button class="hold">Hold</button>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>

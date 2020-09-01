@@ -1,39 +1,11 @@
-//Game Constructor & Prototypes
-function Game() {
-  this.players = [];
-  this.switch = 1;//<-- This will be used to find player id (switch will change after roll and then you can match it to player id)
-  this.currentId = 0;//<-- This is will be used to assign player id
-}
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/styles.css';
+// import './img/pig.jpg';
 
-Game.prototype.assignId = function() {
-  this.currentId += 1;//<-- This will update game current id
-  return this.currentId;
-}
-
-Game.prototype.addPlayer = function(player) {
-  player.id = this.assignId();//<--This will assign unique player id
-  this.players.push(player);//<--This will add player to game object
-}
-
-Game.prototype.lookupPlayer = function(id) {
-  for (let i = 0; i < this.players.length; i++) { //<--This will loop through players in game
-    if (this.players[i]) { //<--This will ensure there are players 
-      if (this.players[i].id == id) { //<-- This will check if player's id matches parameter(id)
-        return this.players[i]; //<-- This will return mathcing player id
-      }
-    }
-  };
-  return false; //<--This will return false if no matching id is found
-}
-
-//Player Constructor & Prototypes
-
-function Player(turnTotal, score) {
-  this.turnTotal = 0;
-  this.score = 0;
-}
-
-//User Interface Logic
+import { Game } from './scripts.js';
+import { Player } from './scripts.js';
 
 Player.prototype.diceRoll = function() {
   let diceRoll = generateRandomNumber();
@@ -49,7 +21,7 @@ Player.prototype.diceRoll = function() {
     $("#turnScore").text(this.turnTotal);
     $("#currentScore").text(this.score);
   }
-}
+};
 //Factory Functions
 function generateRandomNumber() {
   let randomNumber = Math.floor((Math.random() * 6) + 1);
@@ -59,7 +31,7 @@ function generateRandomNumber() {
 
 let game = new Game();//<--This is global object
 
-function hold(id) {   
+function hold() {   
   let currentPlayer = game.lookupPlayer(game.switch); //<--This will link player id
   console.log(currentPlayer);
   currentPlayer.score += currentPlayer.turnTotal; //<--This will update players key(score)
@@ -89,17 +61,15 @@ $(document).ready(function() {
     $("#rules").hide();
     $(".showLater").show();
   
-  $(".roll").click(function(event) {
-    let currentPlayer = game.lookupPlayer(game.switch);
-    console.log(currentPlayer);
-    currentPlayer.diceRoll();
-    // console.log(player1.turnTotal);
-    // console.log(player1.score);
+    $(".roll").click(function() {
+      let currentPlayer = game.lookupPlayer(game.switch);
+      console.log(currentPlayer);
+      currentPlayer.diceRoll();
 
-  $(".hold").click(function(event) {
+  $(".hold").click(function() {
     let currentPlayer = game.lookupPlayer(game.switch);
     hold(currentPlayer);
-  })
-  });
+     });
+   });
   });
 });
